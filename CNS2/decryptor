@@ -1,0 +1,57 @@
+#!/bin/bash
+
+COMPLETE_DICT='/Users/giulioserra/Documents/Universita/CNS2/englishDic.txt'
+FREQUENT_DICT='/Users/giulioserra/Documents/Universita/CNS2/commonWords.txt'
+OUTPUT='/Users/giulioserra/Documents/Universita/CNS2/plain.txt'
+COMMONWORD=false;
+
+echo "Starting AES bruteForce attack..."
+start=$SECONDS
+
+while IFS= read -r LINE
+do
+  DECRIPTION=$(openssl enc -aes-192-cbc -pbkdf2 -d -in ciphertext.enc -out $OUTPUT -k $LINE 2>&1 | head -n 1)
+    if [ "$DECRIPTION" != "bad decrypt" ]
+        then
+            PLAIN=$(<$OUTPUT)
+            if [[ $PLAIN == *[![:ascii]]* ]]; 
+            then
+                echo $LINE;
+            else
+                end=$SECONDS
+                COMMONWORD=true;
+                duration=$(( end - start ))
+                echo "file decrypted, password: $LINE , elapsed time: $duration s"; 
+                exit
+            fi
+
+    fi
+
+done < "$FREQUENT_DICT"
+
+if [ !"$COMMONWORD" ]
+    then
+        echo "the key is not a common word, trying with the full english dictionary..."
+
+        while IFS= read -r LINE
+            do
+            DECRIPTION=$(openssl enc -aes-192-cbc -pbkdf2 -d -in ciphertext.enc -out $OUTPUT -k $LINE 2>&1 | head -n 1)
+            if [ "$DECRIPTION" != "bad decrypt" ]
+                then
+                PLAIN=$(<$OUTPUT)
+                if [[ $PLAIN == *[![:ascii]]* ]]; 
+                then
+                    echo $LINE;
+                else
+                    end=$SECONDS
+                    COMMONWORD = true;
+                    duration=$(( end - start ))
+                    echo "file decrypted, password: $LINE , elapsed time: $duration" + "s"; 
+                    exit
+            fi
+
+        fi
+
+        done < "$COMPLETE_DICT"
+fi
+

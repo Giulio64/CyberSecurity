@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}% 
+\contentsline {section}{\numberline {2}Offline Dictionary Attack}{1}{section.2}% 
+\contentsline {section}{\numberline {3}Analyzing the Encrypted data}{1}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Key Length}{1}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}PDKDF2}{2}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Dictionary}{2}{subsection.3.3}% 
+\contentsline {section}{\numberline {4}Designing the JAVA Implementation}{2}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}AES decryption}{2}{subsection.4.1}% 
+\contentsline {section}{\numberline {5}JAVA Execution and Results}{5}{section.5}% 
+\contentsline {section}{\numberline {6}OpenSSL Library}{5}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}Implementation}{5}{subsection.6.1}% 
+\contentsline {section}{\numberline {7}Final Results}{6}{section.7}% 
+\contentsline {section}{\numberline {8}References}{8}{section.8}% 
